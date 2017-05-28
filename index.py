@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, g
 from bs4 import BeautifulSoup
+import os
 import requests
 import pandas as pd
 
 app = Flask(__name__)
+
+
+dirpath = os.path.join(app.root_path,'download')
 
 @app.route('/')
 def index():
@@ -12,19 +16,14 @@ def index():
 
     return render_template('index.html', filename=filename)
 
-@app.route('/crawler1', methods=['POST'])
-def crawler1():
-
-    filename = 123
-
-    return render_template('index.html', filename=filename)
-
 @app.route('/crawler', methods=['POST'])
 def crawler():
 
-    df = pd.DataFrame([{'term':0,'date':0,'1st':0,'2nd':0,'3rd':0,'4th':0,'5th':0}])
+    df = pd.DataFrame()
 
-    for i in range(106000001,106000015):
+    #df = pd.DataFrame([{'term':0,'date':0,'1st':0,'2nd':0,'3rd':0,'4th':0,'5th':0}])
+
+    for i in range(106000001,106000025):
 
         payload = {
         "__EVENTTARGET":"",
@@ -52,7 +51,7 @@ def crawler():
         "D539Control_history1$btnSubmit":"查詢"
         }
 
-        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload)
+        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload1)
         #print (res_post.text)
 
         soup = BeautifulSoup(res_post.text,'html.parser')
@@ -95,11 +94,20 @@ def crawler():
 
         out = df.to_json(orient='records')
 
-        with open('539.txt', 'w') as f:
+        with open('./download/539.txt', 'w') as f:
             f.write(out)
     
     return render_template('index.html', filename=out)
     #return send_from_directory(dirpath,filename,as_attachment=True)
+
+
+@app.route('/download', methods=['POST'])
+def download():
+
+    filename = '539.txt'
+
+    return send_from_directory(dirpath,filename,as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=9000,debug=True)
