@@ -13,3 +13,4 @@ pytz==2016.10
 PyYAML==3.12
 pyflakes==1.5.0
 requests==2.12.4
+numpy==1.12.0
