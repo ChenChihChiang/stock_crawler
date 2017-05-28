@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, g
-import os
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-from datetime import datetime
-import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
