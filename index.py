@@ -52,7 +52,7 @@ def crawler():
         "D539Control_history1$btnSubmit":"查詢"
         }
 
-        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload)
+        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload1)
         #print (res_post.text)
 
         soup = BeautifulSoup(res_post.text,'html.parser')
