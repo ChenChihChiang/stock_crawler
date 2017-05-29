@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import os
 import requests
 import pandas as pd
+import numpy
 
 app = Flask(__name__)
 
@@ -51,7 +52,7 @@ def crawler():
         "D539Control_history1$btnSubmit":"查詢"
         }
 
-        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload1)
+        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload)
         #print (res_post.text)
 
         soup = BeautifulSoup(res_post.text,'html.parser')
