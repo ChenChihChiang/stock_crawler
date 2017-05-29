@@ -52,7 +52,21 @@ def crawler():
         "D539Control_history1$btnSubmit":"查詢"
         }
 
-        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload1)
+        payload2 = {
+        "__EVENTTARGET":"",
+        "__EVENTARGUMENT":"",
+        "__LASTFOCUS":"",
+        "__VIEWSTATE":"/wEPDwULLTExOTIxMTcwNTkPZBYCAgEPZBYCAgMPZBYMAgEPEGRkFgECBGQCAw8QDxYCHgdDaGVja2VkZ2RkZGQCCQ8QZGQWAQIDZAILDxBkZBYBAgRkAg8PDxYCHgRUZXh0ZWRkAhEPPCsACQEADxYEHghEYXRhS2V5cxYAHgtfIUl0ZW1Db3VudAIBZBYCZg9kFi4CAQ8PFgIfAQUJMTA1MDAwMzE0ZGQCAw8PFgIfAQUJMTA1LzEyLzMxZGQCBQ8PFgIfAQUCMTRkZAIHDw8WAh8BBQIzNGRkAgkPDxYCHwEFAjIxZGQCCw8PFgIfAQUCMThkZAINDw8WAh8BBQIyNmRkAg8PDxYCHwEFCTEwNi8wMy8zMWRkAhEPDxYCHwEFAjE0ZGQCEw8PFgIfAQUCMThkZAIVDw8WAh8BBQIyMWRkAhcPDxYCHwEFAjI2ZGQCGQ8PFgIfAQUCMzRkZAIbDw8WAh8BBQozNSw4NTYsNDAwZGQCHQ8PFgIfAQUJOSwxNDgsOTUwZGQCHw8PFgIfAQUBMGRkAiEPDxYCHwEFAzE3N2RkAiMPDxYCHwEFBTYsNzA0ZGQCJQ8PFgIfAQUGNzEsOTU1ZGQCJw8PFgIfAQUJOCwwMDAsMDAwZGQCKQ8PFgIfAQUGMjAsMDAwZGQCKw8PFgIfAQUDMzAwZGQCLQ8PFgIfAQUCNTBkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAwUaRDUzOUNvbnRyb2xfaGlzdG9yeTEkcmFkTk8FGkQ1MzlDb250cm9sX2hpc3RvcnkxJHJhZFlNBRpENTM5Q29udHJvbF9oaXN0b3J5MSRyYWRZTdAnPG8TBGmTLPOGLDFhv+kkqT0IxKgIOgRmjNTUpD3T",
+        "__VIEWSTATEGENERATOR":"09BD3138",
+        "__EVENTVALIDATION":"/wEWIAKz6ZmcCgLMm6OFDQLc9InrAQLD9InrAQLC9InrAQLD9MXoAQLH9InrAQLG9InrAQLF9InrAQLA9InrAQLB9InrAQLD9MnoAQLX4LOKDALSmZOFDALR4M+ABwKZq6PUDwL2kcGiAgLT/ueJCAKo54WUDgLAydWcDwLBydWcDwLCydWcDwLDydWcDwLEydWcDwLFydWcDwLGydWcDwLXydWcDwLYydWcDwLAyZWfDwLAyZmfDwLAyZ2fDwLuno2BDTdjgWXK/n/D2iaVBbmVNOQRfpi586N+XDLJXGu21FoU",
+        "D539Control_history1$DropDownList1":"5",
+        "D539Control_history1$chk":"radNO",
+        "D539Control_history1$txtNO":str(i),
+        "D539Control_history1$btnSubmit":"查詢"
+        }
+
+
+        res_post = requests.post("http://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx",data = payload2)
         #print (res_post.text)
 
         soup = BeautifulSoup(res_post.text,'html.parser')
