@@ -2,24 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>539 Crawler</title>
+	<title>Stock Crawler</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/styles/main.css">
 </head>
 <body bgcolor="#cccccc">
 	<hr size="5" align="center" noshade width="90%" color="white">
 	<h1>
-	<font color="white">539 Crawler</font>
+	<font color="white">Stock Crawler</font>
 	</h1>
 	<hr size="5" align="center" noshade width="90%" color="white">
 	<form action="/crawler" method="POST">
+		<select name="num">
+		<option value="2412">中華電</option>
+		<option value="2823">中國人壽</option>
+		<option value="5871">中租迪和</option>
+		</select>
+		<br><br> 
 		<button type="crawler">開始</button><br><br>
 	</form>
 	{% if filename %}
 	<span>{{ filename }}</span><br>
 	<form action="/download" method="POST">
-		<input type="hidden" name="url" value={{url}}>
-		<input type="hidden" name="pixel" value="720p">
+		<input type="hidden" name="num" value={{num}}>
 		<button type="download">下載</button><br><br>
 	</form>
 	{% endif %}
